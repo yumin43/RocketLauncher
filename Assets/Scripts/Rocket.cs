@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
@@ -15,13 +16,11 @@ public class Rocket : MonoBehaviour
     
     void Awake()
     {
-        // TODO : Rigidbody2D ?????????? ????????(??) 
         _rb2d = GetComponent<Rigidbody2D>();
     }
     
     public void Shoot()
     {
-        // TODO : fuel??? ??????????? ??? ??????? SPEED????? ???????? ??????, ??????? ??
         if (fuel >= 10f)
         {
             fuel -= 10f;
@@ -31,5 +30,28 @@ public class Rocket : MonoBehaviour
         {
             return;
         }
+    }
+
+    private void Update() 
+    {
+        float score = (transform.position.y - 0.403666f) * 1000;
+
+        if (score < 0)
+        {
+            score = 0f;
+        }
+        currentScoreTxt.text = $"{score.ToString("N0")} M";
+
+        if (score > GameManager.Instance.highScore)
+        {
+            GameManager.Instance.highScore = score;
+        }
+        HighScoreTxt.text = $"HIGH : {GameManager.Instance.highScore.ToString("N0")} M";
+    }
+
+    public void OnRetryButtonClick()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene("RocketLauncher");
     }
 }
