@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 125341255}
   - component: {fileID: 125341254}
   - component: {fileID: 125341256}
+  - component: {fileID: 125341257}
+  - component: {fileID: 125341258}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -308,6 +310,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e9a1bd1fbc6e049bc58863d91721f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &125341257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125341250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbebbf3951c845df888118393c22064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpImage: {fileID: 682353280}
+--- !u!114 &125341258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125341250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7598b57bb99ca4cb8b3e8b8ad5e87175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScoreTxt: {fileID: 765237560}
+  HighScoreTxt: {fileID: 2033280239}
 --- !u!1 &289980988
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +690,7 @@ GameObject:
   - component: {fileID: 682353281}
   - component: {fileID: 682353280}
   m_Layer: 5
-  m_Name: Back
+  m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1074,8 +1103,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125341256}
-        m_TargetAssemblyTypeName: Rocket, Assembly-CSharp
+      - m_Target: {fileID: 125341257}
+        m_TargetAssemblyTypeName: RocketEnergySystem, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 1
         m_Arguments:
