@@ -1,19 +1,5 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SceneManagement;
-// using Microsoft.Unity.VisualStudio.Editor;
-
-public class Rocket : MonoBehaviour
-{
-    public void OnRetryButtonClick()
-    {
-        Destroy(gameObject);
-        SceneManager.LoadScene("RocketLauncher");
-    }
-}
-
 
 public class RocketEnergySystem : MonoBehaviour
 {
@@ -25,9 +11,7 @@ public class RocketEnergySystem : MonoBehaviour
     private readonly float SPEED = 5f;
     private readonly float FUELPERSHOOT = 10f;
 
-
-    
-    void Awake()
+    private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
     }
