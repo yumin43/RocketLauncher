@@ -1,7 +1,9 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+// using Microsoft.Unity.VisualStudio.Editor;
 
 public class Rocket : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class Rocket : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI currentScoreTxt;
     [SerializeField] private TextMeshProUGUI HighScoreTxt;
+
+    [SerializeField] private Image hpImage;
     
     void Awake()
     {
@@ -21,9 +25,10 @@ public class Rocket : MonoBehaviour
     
     public void Shoot()
     {
-        if (fuel >= 10f)
+        if (fuel >= FUELPERSHOOT)
         {
-            fuel -= 10f;
+            fuel -= FUELPERSHOOT;
+            hpImage.fillAmount = fuel * 0.01f;
             _rb2d.AddForce(Vector2.up * SPEED, ForceMode2D.Impulse);
         }
         else
@@ -34,6 +39,15 @@ public class Rocket : MonoBehaviour
 
     private void Update() 
     {
+        fuel += 10f * Time.deltaTime;
+
+        if (fuel >= 100f)
+        {
+            fuel = 100f;
+        }
+
+        hpImage.fillAmount = fuel * 0.01f;
+
         float score = (transform.position.y - 0.403666f) * 1000;
 
         if (score < 0)
